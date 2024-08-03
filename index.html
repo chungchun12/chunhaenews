@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>천해신문</title>
+    <title>신문 웹사이트</title>
     <style>
         /* 기본 스타일 리셋 */
         body, h1, input {
@@ -80,41 +80,14 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .add-article {
-            margin: 1rem 0;
-            padding: 1rem;
-            background: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .add-article input[type="text"],
-        .add-article textarea {
-            width: 100%;
-            padding: 0.5rem;
-            margin-bottom: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .add-article button {
-            padding: 0.5rem 1rem;
-            background: #00796b;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .add-article button:hover {
-            background: #004d40;
+        .sidebar h2 {
+            margin-top: 0;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>천해신문문</h1>
+        <h1>신문 웹사이트</h1>
         <input type="text" id="searchInput" placeholder="검색..." />
     </header>
     
@@ -124,12 +97,8 @@
         </section>
         
         <aside class="sidebar">
-            <div class="add-article">
-                <h2>기사 추가</h2>
-                <input type="text" id="articleTitle" placeholder="제목" />
-                <textarea id="articleContent" rows="4" placeholder="내용"></textarea>
-                <button onclick="addArticle()">기사 추가</button>
-            </div>
+            <h2>사이드바</h2>
+            <p>여기에 사이드바 내용을 추가하세요.</p>
         </aside>
     </main>
     
@@ -168,21 +137,7 @@
 
             searchInput.addEventListener('input', filterArticles);
 
-            function addArticle() {
-                const titleInput = document.getElementById('articleTitle');
-                const contentInput = document.getElementById('articleContent');
-                
-                if (titleInput.value.trim() && contentInput.value.trim()) {
-                    articles.push({
-                        title: titleInput.value,
-                        content: contentInput.value
-                    });
-                    titleInput.value = '';
-                    contentInput.value = '';
-                    displayArticles(articles);
-                }
-            }
-
+            // 초기 기사 목록 표시
             displayArticles(articles);
         });
     </script>
