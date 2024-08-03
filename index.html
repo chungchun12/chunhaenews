@@ -15,10 +15,12 @@
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
+            background-color: #e0f7fa; /* 푸른 배경색 */
+            color: #333;
         }
 
         header {
-            background: #333;
+            background: #00796b; /* 어두운 푸른색 */
             color: #fff;
             padding: 1rem;
             text-align: center;
@@ -37,12 +39,29 @@
         }
 
         main {
+            display: flex;
             padding: 1rem;
+            gap: 1rem;
+        }
+
+        .article-list {
+            flex: 3;
+            overflow-x: auto;
+            white-space: nowrap;
+            background: #ffffff; /* 기사 영역 배경색 */
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .article {
-            border-bottom: 1px solid #ddd;
-            padding: 1rem 0;
+            display: inline-block;
+            width: 300px;
+            margin-right: 1rem;
+            background: #fafafa; /* 기사 배경색 */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1rem;
         }
 
         .article h2 {
@@ -52,23 +71,70 @@
         .article p {
             margin: 0;
         }
+
+        .sidebar {
+            flex: 1;
+            background: #ffffff; /* 사이드바 배경색 */
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .add-article {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .add-article input[type="text"],
+        .add-article textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .add-article button {
+            padding: 0.5rem 1rem;
+            background: #00796b;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .add-article button:hover {
+            background: #004d40;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>신문 웹사이트</h1>
+        <h1>천해신문문</h1>
         <input type="text" id="searchInput" placeholder="검색..." />
     </header>
     
     <main>
-        <section id="article-list">
+        <section class="article-list" id="article-list">
             <!-- 기사 항목들이 여기에 동적으로 추가됩니다. -->
         </section>
+        
+        <aside class="sidebar">
+            <div class="add-article">
+                <h2>기사 추가</h2>
+                <input type="text" id="articleTitle" placeholder="제목" />
+                <textarea id="articleContent" rows="4" placeholder="내용"></textarea>
+                <button onclick="addArticle()">기사 추가</button>
+            </div>
+        </aside>
     </main>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 예제 기사 데이터
             const articles = [
                 { title: '기사 제목 1', content: '기사 내용 1...' },
                 { title: '기사 제목 2', content: '기사 내용 2...' },
@@ -102,7 +168,21 @@
 
             searchInput.addEventListener('input', filterArticles);
 
-            // 초기 기사 목록 표시
+            function addArticle() {
+                const titleInput = document.getElementById('articleTitle');
+                const contentInput = document.getElementById('articleContent');
+                
+                if (titleInput.value.trim() && contentInput.value.trim()) {
+                    articles.push({
+                        title: titleInput.value,
+                        content: contentInput.value
+                    });
+                    titleInput.value = '';
+                    contentInput.value = '';
+                    displayArticles(articles);
+                }
+            }
+
             displayArticles(articles);
         });
     </script>
