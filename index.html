@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>천해신문</title>
+    <style>
+        /* 기본 스타일 리셋 */
+        body, h1, input {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        #searchInput {
+            padding: 0.5rem;
+            width: 80%;
+            max-width: 600px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        main {
+            padding: 1rem;
+        }
+
+        .article {
+            border-bottom: 1px solid #ddd;
+            padding: 1rem 0;
+        }
+
+        .article h2 {
+            margin: 0 0 0.5rem;
+        }
+
+        .article p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>신문 웹사이트</h1>
+        <input type="text" id="searchInput" placeholder="검색..." />
+    </header>
+    
+    <main>
+        <section id="article-list">
+            <!-- 기사 항목들이 여기에 동적으로 추가됩니다. -->
+        </section>
+    </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 예제 기사 데이터
+            const articles = [
+                { title: '기사 제목 1', content: '기사 내용 1...' },
+                { title: '기사 제목 2', content: '기사 내용 2...' },
+                { title: '기사 제목 3', content: '기사 내용 3...' }
+            ];
+
+            const articleList = document.getElementById('article-list');
+            const searchInput = document.getElementById('searchInput');
+
+            function displayArticles(filteredArticles) {
+                articleList.innerHTML = '';
+                filteredArticles.forEach(article => {
+                    const articleElement = document.createElement('div');
+                    articleElement.classList.add('article');
+                    articleElement.innerHTML = `
+                        <h2>${article.title}</h2>
+                        <p>${article.content}</p>
+                    `;
+                    articleList.appendChild(articleElement);
+                });
+            }
+
+            function filterArticles() {
+                const query = searchInput.value.toLowerCase();
+                const filteredArticles = articles.filter(article =>
+                    article.title.toLowerCase().includes(query) || 
+                    article.content.toLowerCase().includes(query)
+                );
+                displayArticles(filteredArticles);
+            }
+
+            searchInput.addEventListener('input', filterArticles);
+
+            // 초기 기사 목록 표시
+            displayArticles(articles);
+        });
+    </script>
+</body>
+</html>
