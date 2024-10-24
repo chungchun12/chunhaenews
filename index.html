@@ -3,143 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>신문 웹사이트</title>
+    <title>비밀번호로 보호된 신문 사이트</title>
     <style>
-        /* 기본 스타일 리셋 */
-        body, h1, input {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #e0f7fa; /* 푸른 배경색 */
-            color: #333;
-        }
-
-        header {
-            background: #00796b; /* 어두운 푸른색 */
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        header h1 {
-            margin-bottom: 0.5rem;
-        }
-
-        #searchInput {
-            padding: 0.5rem;
-            width: 80%;
-            max-width: 600px;
-            border: none;
-            border-radius: 5px;
-        }
-
-        main {
-            display: flex;
-            padding: 1rem;
-            gap: 1rem;
-        }
-
-        .article-list {
-            flex: 3;
-            overflow-x: auto;
-            white-space: nowrap;
-            background: #ffffff; /* 기사 영역 배경색 */
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .article {
-            display: inline-block;
-            width: 300px;
-            margin-right: 1rem;
-            background: #fafafa; /* 기사 배경색 */
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 1rem;
-        }
-
-        .article h2 {
-            margin: 0 0 0.5rem;
-        }
-
-        .article p {
+            background-color: #f4f4f4;
             margin: 0;
+            padding: 0;
         }
 
-        .sidebar {
-            flex: 1;
-            background: #ffffff; /* 사이드바 배경색 */
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        #password-protect {
+            text-align: center;
+            margin-top: 100px;
         }
 
-        .sidebar h2 {
-            margin-top: 0;
+        #news-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+        }
+
+        .news-part {
+            margin-bottom: 30px;
+        }
+
+        .news-part h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .news-images {
+            display: flex;
+            gap: 20px;
+        }
+
+        .news-images img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>신문 웹사이트</h1>
-        <input type="text" id="searchInput" placeholder="검색..." />
-    </header>
-    
-    <main>
-        <section class="article-list" id="article-list">
-            <!-- 기사 항목들이 여기에 동적으로 추가됩니다. -->
-        </section>
-        
-        <aside class="sidebar">
-            <h2>사이드바</h2>
-            <p>여기에 사이드바 내용을 추가하세요.</p>
-        </aside>
-    </main>
-    
+    <div id="password-protect">
+        <h1>비밀번호로 보호된 신문 기사</h1>
+        <p>비밀번호를 입력하세요:</p>
+        <input type="password" id="password" placeholder="비밀번호 입력">
+        <button onclick="checkPassword()">확인</button>
+    </div>
+
+    <div id="news-container">
+        <h1>천해신문</h1>
+
+        <!-- 첫 번째 파트 -->
+        <div class="news-part">
+            <h2>기사 제목 1</h2>
+            <div class="news-images">
+                <img src="image1.jpg" alt="신문 기사 1-1">
+                <img src="image2.jpg" alt="신문 기사 1-2">
+            </div>
+        </div>
+
+        <!-- 두 번째 파트 -->
+        <div class="news-part">
+            <h2>기사 제목 2</h2>
+            <div class="news-images">
+                <img src="image3.jpg" alt="신문 기사 2-1">
+                <img src="image4.jpg" alt="신문 기사 2-2">
+            </div>
+        </div>
+
+        <!-- 12개의 추가 파트 -->
+        <div class="news-part">
+            <h2>기사 제목 3</h2>
+            <div class="news-images">
+                <img src="image5.jpg" alt="신문 기사 3-1">
+                <img src="image6.jpg" alt="신문 기사 3-2">
+            </div>
+        </div>
+
+        <!-- 반복적으로 이어지는 파트들 -->
+        <div class="news-part">
+            <h2>기사 제목 14</h2>
+            <div class="news-images">
+                <img src="image27.jpg" alt="신문 기사 14-1">
+                <img src="image28.jpg" alt="신문 기사 14-2">
+            </div>
+        </div>
+    </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const articles = [
-                { title: '기사 제목 1', content: '기사 내용 1...' },
-                { title: '기사 제목 2', content: '기사 내용 2...' },
-                { title: '기사 제목 3', content: '기사 내용 3...' }
-            ];
-
-            const articleList = document.getElementById('article-list');
-            const searchInput = document.getElementById('searchInput');
-
-            function displayArticles(filteredArticles) {
-                articleList.innerHTML = '';
-                filteredArticles.forEach(article => {
-                    const articleElement = document.createElement('div');
-                    articleElement.classList.add('article');
-                    articleElement.innerHTML = `
-                        <h2>${article.title}</h2>
-                        <p>${article.content}</p>
-                    `;
-                    articleList.appendChild(articleElement);
-                });
+        function checkPassword() {
+            const passwordInput = document.getElementById('password').value;
+            const correctPassword = "천해신문 화이팅";
+            if (passwordInput === correctPassword) {
+                document.getElementById('password-protect').style.display = 'none';
+                document.getElementById('news-container').style.display = 'block';
+            } else {
+                alert("비밀번호가 틀렸습니다.");
             }
-
-            function filterArticles() {
-                const query = searchInput.value.toLowerCase();
-                const filteredArticles = articles.filter(article =>
-                    article.title.toLowerCase().includes(query) || 
-                    article.content.toLowerCase().includes(query)
-                );
-                displayArticles(filteredArticles);
-            }
-
-            searchInput.addEventListener('input', filterArticles);
-
-            // 초기 기사 목록 표시
-            displayArticles(articles);
-        });
+        }
     </script>
 </body>
 </html>
